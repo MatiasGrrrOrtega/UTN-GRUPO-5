@@ -1,33 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import TaskForm from './components/TaskForm/TaskForm'
+import TaskList from './components/TaskList/TaskList'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() {  
+  const [tasks, setTasks] = useState([]);
+
+  // Esta funcion se encarga de crear una nueva tarea
+  // y añadirla al estado de tareas
+  // Recibe como parametro un objeto con la siguiente forma:
+  // {title: string, completed: boolean}
+  const createTask = (task) => {
+    const newTask = {
+      id: tasks.length + 1,
+      title: task.title,
+      completed: task.completed
+    }
+    setTasks([...tasks, newTask])
+  }
+
+  // Esta funcion se encarga de eliminar una tarea
+  // Recibe como parametro el id de la tarea a eliminar
+  // y actualiza el estado de tareas
+  const deleteTask = (id) => {
+    const newTasks = [...tasks].filter(task => task.id !== id)
+    setTasks(newTasks)
+  }
+
+  // Esta funcion se encarga de cambiar el estado de la tarea
+  // Recibe como parametro el id de la tarea a cambiar de estado
+  // y actualiza el estado de tareas
+  const onComplete = (id) => {
+    const newTasks = [...tasks].map(task => task.id === id ? {...task,
+      completed: !task.completed} : {...task})
+    setTasks(newTasks);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Lista de Tareas</h1>
+      <TaskForm createTask={createTask}/>
+      <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete}/>
     </>
   )
 }
