@@ -3,7 +3,7 @@ import TaskForm from './components/TaskForm/TaskForm'
 import TaskList from './components/TaskList/TaskList'
 import './App.css'
 
-function App() {  
+function App() {
   const [tasks, setTasks] = useState([]);
 
   // Esta funcion se encarga de crear una nueva tarea
@@ -31,16 +31,22 @@ function App() {
   // Recibe como parametro el id de la tarea a cambiar de estado
   // y actualiza el estado de tareas
   const onComplete = (id) => {
-    const newTasks = [...tasks].map(task => task.id === id ? {...task,
-      completed: !task.completed} : {...task})
+    const newTasks = [...tasks].map(task => task.id === id ? {
+      ...task,
+      completed: !task.completed
+    } : { ...task })
     setTasks(newTasks);
   }
 
   return (
     <>
-      <h1>Lista de Tareas</h1>
-      <TaskForm createTask={createTask}/>
-      <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete}/>
+      <div className='container'>
+        <h1>Lista de Tareas</h1>
+        <hr />
+        <TaskForm createTask={createTask} />
+        <hr />
+        <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete} />
+      </div>
     </>
   )
 }
