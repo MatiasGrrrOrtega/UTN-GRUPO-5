@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TaskForm from './components/TaskForm/TaskForm'
 import TaskList from './components/TaskList/TaskList'
 import './App.css'
@@ -38,6 +38,15 @@ function App() {
     setTasks(newTasks);
   }
 
+  /* 
+    Función que cuenta la cantidad de tareas que hay utilizando useEffect
+  */
+  const [taskCount, setTaskCount] = useState(0)
+
+  useEffect(() => {
+    setTaskCount(tasks.length);
+  }, [tasks])
+
   return (
     <>
       <div className='container'>
@@ -46,6 +55,7 @@ function App() {
         <TaskForm createTask={createTask} />
         <hr />
         <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete} />
+        <span>Cantidad de tareas: {taskCount}</span>
       </div>
     </>
   )
