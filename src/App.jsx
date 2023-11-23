@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  
 
   // Esta funcion se encarga de crear una nueva tarea
   // y añadirla al estado de tareas
@@ -48,7 +49,6 @@ function App() {
   }, [tasks])
 
   return (
-    <>
       <div className='container'>
         <h1>Lista de Tareas</h1>
         <hr />
@@ -57,8 +57,7 @@ function App() {
         <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete} />
         <span>Cantidad de tareas: {taskCount}</span>
       </div>
-    </>
-  )
+   )
 }
 
 export default App
