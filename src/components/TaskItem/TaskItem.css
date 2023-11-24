@@ -6,14 +6,16 @@
     font: bold 0.6em sans-serif;
     background-color: red;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin: 10px;
 }
 
 .task {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border: 1px solid white;
-    margin: auto;
+    border-radius: 8px;
+    gap: 20px;
 }
