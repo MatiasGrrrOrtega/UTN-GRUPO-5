@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <h1>Lista de Tareas</h1>
+      <h1 className='text-3xl font-bold underline'>Lista de Tareas</h1>
       <TaskForm createTask={createTask}/>
       <TaskList tasks={tasks} deleteTask={deleteTask} onComplete={onComplete}/>
     </>
