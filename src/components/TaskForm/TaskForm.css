@@ -1,0 +1,27 @@
+.taskForm button {
+    padding: 5px 20px;
+    margin: 15px;
+    font: bold 0.6em sans-serif;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.taskForm button:hover {
+	color: #ffd700;
+}
+
+.taskForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+

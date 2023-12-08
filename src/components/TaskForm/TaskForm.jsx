@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './TaskForm.css'
 
 function TaskForm({ createTask }) {
     const [title, setTitle] = useState('')
@@ -19,22 +20,22 @@ function TaskForm({ createTask }) {
     // y limpia el estado de title
     const handleSubmit = (e) => {
         e.preventDefault()
-        if(title.trim() === ''){
+        if (title.trim() === '') {
             alert('Escribir una tarea')
             return
-        }else{
-            createTask({title, completed})
+        } else {
+            createTask({ title, completed })
             setTitle('')
         }
     }
 
     return (
         <form className='taskForm' onSubmit={handleSubmit}>
-            <input type="text" 
-                    placeholder="Escribir nueva tarea" 
-                    value={title}
-                    onChange={handleChange}
-                    />
+            <input type="text"
+                placeholder="Escribir nueva tarea"
+                value={title}
+                onChange={handleChange}
+            />
             <button type="submit">Añadir</button>
         </form>
     )
